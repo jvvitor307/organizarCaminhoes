@@ -1,13 +1,10 @@
-import java.sql.Date;
-
-public class Caminhoes {
+ public class Caminhoes {
     private boolean cargaPerigosa;
     private boolean perecivel;
     private String placa;
     private String nomeMotorista;
     private boolean carregado;
     private int pesoQueTransporta;
-    private Date dataUltimaRevisao;
     public boolean isCargaPerigosa() {
         return cargaPerigosa;
     }
@@ -44,21 +41,14 @@ public class Caminhoes {
     public void setPesoQueTransporta(int pesoQueTransporta) {
         this.pesoQueTransporta = pesoQueTransporta;
     }
-    public Date getDataUltimaRevisao() {
-        return dataUltimaRevisao;
-    }
-    public void setDataUltimaRevisao(Date dataUltimaRevisao) {
-        this.dataUltimaRevisao = dataUltimaRevisao;
-    }
     public Caminhoes(boolean cargaPerigosa, boolean perecivel, String placa, String nomeMotorista, boolean carregado,
-            int pesoQueTransporta, Date dataUltimaRevisao) {
+            int pesoQueTransporta) {
         this.cargaPerigosa = cargaPerigosa;
         this.perecivel = perecivel;
         this.placa = placa;
         this.nomeMotorista = nomeMotorista;
         this.carregado = carregado;
         this.pesoQueTransporta = pesoQueTransporta;
-        this.dataUltimaRevisao = dataUltimaRevisao;
     }
     
 
