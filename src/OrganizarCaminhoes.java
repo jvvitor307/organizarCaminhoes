@@ -5,7 +5,6 @@ public class OrganizarCaminhoes {
     Pilha<Caminhoes> perecivel = new Pilha<>();
     Pilha<Caminhoes> carregado = new Pilha<>();
     Pilha<Caminhoes> todCaminhoes = new Pilha<>();
-    
     while(todCaminhoes.size() != 0){
         if(todCaminhoes.top().isCarregado() && todCaminhoes.top().isCargaPerigosa()){
             cargaPerigosa.push(todCaminhoes.pop());
