@@ -1,29 +1,43 @@
-
 import java.util.ArrayList;
-public class Pilha<T> {
-	int size;
-	boolean isempty;
-	ArrayList<T> lista = new ArrayList<>();
-	public T pop(){
-		return lista.remove(size()-1);
-		}
-	public int size() {
-		size++;
-		return size;
-		}
-	public void push(T add){
-		lista.add(add);
-		}
-	public boolean isEmpty() {
-		if(size()-1 == 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	public T top() {
-		return lista.get(size()-1);
-	}
-}
 
+public class Pilha<T> {
+    ArrayList<T> lista;
+    T item;
+    public Pilha() {
+        lista = new ArrayList<>();
+    }
+
+    public T pop() {
+        if (isEmpty()) {
+            System.out.println("A pilha está vazia.");
+            return null;
+        }
+        item = lista.get(size()-1);
+        lista.remove(lista.size() - 1);
+        return item;
+    }
+
+    public int size() {
+        return lista.size();
+    }
+
+    public void push(T add) {
+        lista.add(add);
+    }
+
+    public boolean isEmpty() {
+        return lista.isEmpty();
+    }
+
+    public T top() {
+        if (isEmpty()) {
+            System.out.println("A pilha está vazia.");
+            return null;
+        }
+        return lista.get(lista.size() - 1);
+    }
+
+    public void clear() {
+        lista.clear();
+    }
+}

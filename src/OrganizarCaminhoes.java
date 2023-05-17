@@ -1,29 +1,52 @@
 public class OrganizarCaminhoes {
-    Pilha<Caminhoes> preferencia = new Pilha<>();
-    Pilha<Caminhoes> semPreferencia = new Pilha<>();
-    Pilha<Caminhoes> cargaPerigosa = new Pilha<>();
-    Pilha<Caminhoes> perecivel = new Pilha<>();
-    Pilha<Caminhoes> carregado = new Pilha<>();
-    Pilha<Caminhoes> todCaminhoes = new Pilha<>();
-    while(todCaminhoes.size() != 0){
-        if(todCaminhoes.top().isCarregado() && todCaminhoes.top().isCargaPerigosa()){
-            cargaPerigosa.push(todCaminhoes.pop());
+    private Pilha<Caminhoes> preferencia = new Pilha<>();
+    private Pilha<Caminhoes> semPreferencia = new Pilha<>();
+    private Pilha<Caminhoes> semCaminhao = new Pilha<>();
+    private Caminhoes item;
+    public void OrganizarCaminhoe (Pilha<Caminhoes> todCaminhoes){
+        while(!todCaminhoes.isEmpty()){
+            if(todCaminhoes.top().isCarregado() && todCaminhoes.top().isCargaPerigosa()){
+                item = todCaminhoes.top();
+                todCaminhoes.pop();
+                preferencia.push(item);
+                item = null;
+            }
+            else if(todCaminhoes.top().isCarregado() && todCaminhoes.top().isPerecivel()){
+                item = todCaminhoes.top();
+                todCaminhoes.pop();
+                preferencia.push(item);
+                item = null;
+            }
+            else if(!todCaminhoes.top().isCarregado()){
+                item = todCaminhoes.top();
+                todCaminhoes.pop();
+                semPreferencia.push(item);
+                item = null;
+            }
+            else{
+                item = todCaminhoes.top();
+                todCaminhoes.pop();
+                semCaminhao.push(item);
+                item = null;
+            }
         }
-        else if(todCaminhoes.top().isCarregado() && todCaminhoes.top().isPerecivel()){
-            perecivel.push(todCaminhoes.pop());
+        while(!semCaminhao.isEmpty()){
+                item = semCaminhao.top();
+                semCaminhao.pop();
+                semPreferencia.push(item);
+                item = null;
+            }
         }
-        else if(todCaminhoes.top().isCarregado()){
-            carregado.push(todCaminhoes.pop());
+    public Caminhoes fazerEntregaPref(){
+        if(preferencia.isEmpty()){
+        System.out.println("sem caminhoes");
+        return null;
+        }else{
+            return preferencia.pop();
         }
     }
-    while(cargaPerigosa.size() != 0){
-        preferencia.push(cargaPerigosa.pop());
-    }
-    while(perecivel.size() != 0){
-        preferencia.push(perecivel.pop());
-    }
-    while(carregado.size() != 0){
-        semPreferencia.push(carregado.pop());
+    public Caminhoes fazerEntregaSemPref(){
+        return semPreferencia.pop();
     }
 }
 

@@ -1,4 +1,5 @@
  public class Caminhoes {
+    private String nome;
     private boolean cargaPerigosa;
     private boolean perecivel;
     private String placa;
@@ -41,8 +42,15 @@
     public void setPesoQueTransporta(int pesoQueTransporta) {
         this.pesoQueTransporta = pesoQueTransporta;
     }
-    public Caminhoes(boolean cargaPerigosa, boolean perecivel, String placa, String nomeMotorista, boolean carregado,
-            int pesoQueTransporta) {
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public Caminhoes(String nome, boolean cargaPerigosa, boolean perecivel, String placa, String nomeMotorista,
+            boolean carregado, int pesoQueTransporta) {
+        this.nome = nome;
         this.cargaPerigosa = cargaPerigosa;
         this.perecivel = perecivel;
         this.placa = placa;
@@ -50,6 +58,6 @@
         this.carregado = carregado;
         this.pesoQueTransporta = pesoQueTransporta;
     }
-    
+
 
 }
